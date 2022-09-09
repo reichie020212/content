@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <table>
+        <thead>
+            {% for col in columns %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+                <tr>
+                    <td><a href="{% url 'car_detail' obj.pk %}">{{ obj.name }}</a></td>
+                    <td><a href="{% url 'car_update' obj.pk %}">{{ obj.created }}</a></td>
+                    <td><a href="{% url 'car_delete' obj.pk %}">{{ obj.updated }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a type="button" href="{% url 'car_create' %}">Create</a>
+
+{% endblock %}
